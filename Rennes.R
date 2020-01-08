@@ -34,8 +34,8 @@ if (format == "24_30") {
   coordinates <- make_coordinates(c(-1.738, -1.585),
                                   c(48.0750, 48.1479))
 } else if (format == "4_3") {
-  coordinates <- make_coordinates(c(-1.733, -1.588),
-                                  c(48.0750, 48.1476))
+  coordinates <- make_coordinates(c(-1.731, -1.586),
+                                  c(48.0748, 48.1474))
 }
 
 roads <- coordinates %>%
@@ -168,8 +168,8 @@ ggplot() +
           size = .15) + 
   # Signature
   annotate("label",
-           x = sum(coordinates["x", ] * c(.03, .97)),
-           y = sum(coordinates["y", ] * c(.975, .025)),
+           x = sum(coordinates["x", ] * c(.035, .965)),
+           y = sum(coordinates["y", ] * c(.965, .035)),
            label = "G H",
            fontface = "bold.italic",
            family = "Palatino Linotype",
