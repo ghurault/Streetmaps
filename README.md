@@ -6,4 +6,4 @@ Inspired by [this tutorial](https://ggplot2tutor.com/streetmaps/streetmaps/).
 
 ## Rennes
 
-...
+![Rennes](img/Rennes_4_3.jpg)
