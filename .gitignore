@@ -37,3 +37,10 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+# Custom
+Maps/*.jpg
+Maps/*.jpeg
+Maps/*.png
+Maps/*.tiff
+Maps/*.tif
