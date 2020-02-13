@@ -10,10 +10,10 @@ library(tidyverse)
 library(osmdata)
 source("functions.R")
 
-colour_street <- "#ffbe7f"
+colour_street <- "black"
 colour_green <- "#477725"
 colour_water <- "#5A97AA"
-colour_background <- "#282828"
+colour_background <- "white"
 
 # Processing --------------------------------------------------------------
 
