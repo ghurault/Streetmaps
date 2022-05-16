@@ -1,6 +1,8 @@
 # Libraries ---------------------------------------------------------------
 
-library(tidyverse)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
 library(here)
 library(osmdata)
 library(sf)
