@@ -183,7 +183,7 @@ ggplot() +
         panel.background = element_rect(fill = colour_background))
 
 if (FALSE) {
-  ggsave(paste0("Maps/Rennes_", format, ".jpg"),
+  ggsave(here("docs", paste0("Rennes_", format, ".jpg")),
          width = 20 * ratio_xy(coordinates), height = 20, units = "cm",
          scale = 1.1, dpi = 600)
 }

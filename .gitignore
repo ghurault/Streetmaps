@@ -39,9 +39,4 @@ vignettes/*.pdf
 .Renviron
 
 # Custom
-Maps/*.jpg
-Maps/*.jpeg
-Maps/*.png
-Maps/*.tiff
-Maps/*.tif
 README.html

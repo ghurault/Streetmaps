@@ -1,1 +1,0 @@
-Folder where to save maps (locally)

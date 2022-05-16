@@ -143,7 +143,7 @@ ry <- ggplot_build(p)$layout$panel_scales_y[[1]]$range$range
 r <- ratio_xy(make_coordinates(rx, ry))
 
 if (FALSE) {
-  ggsave("Maps/Mons.jpg",
+  ggsave(here("docs", "Mons.jpg"),
          width = 20 * r, height = 20, units = "cm",
          scale = 1, dpi = 600)
 }
