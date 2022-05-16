@@ -19,65 +19,49 @@ colour_background <- "white"
 coordinates <- make_coordinates(c(3.09, 3.13),
                                 c(50.628,50.653)) # c(50.634,50.653)
 
-roads <- coordinates %>%
-  opq() %>%
-  add_osm_feature(key = "highway", 
-                  value = c("motorway", "trunk", "primary",
-                            "motorway_link", "trunk_link", "primary_link")) %>%
-  osmdata_sf()
+roads <- get_osmdata(coordinates,
+                     key = "highway", 
+                     value = c("motorway", "trunk", "primary",
+                               "motorway_link", "trunk_link", "primary_link"))
 
-rail <- coordinates %>%
-  opq() %>%
-  add_osm_feature(key = "railway", 
-                  value = c("rail")) %>%
-  osmdata_sf()
+rail <- get_osmdata(coordinates,
+                    key = "railway", 
+                    value = c("rail"))
 
 streets <- c(
-  coordinates %>%
-    opq() %>%
-    add_osm_feature(key = "highway", 
-                    value = c("secondary", "tertiary",
-                              "secondary_link", "tertiary_link")) %>%
-    osmdata_sf(),
-  coordinates %>%
-    opq() %>%
-    add_osm_feature(key = "junction", 
-                    value = c("roundabout")) %>%
-    osmdata_sf()
+  get_osmdata(coordinates,
+              key = "highway", 
+              value = c("secondary", "tertiary",
+                        "secondary_link", "tertiary_link")),
+  get_osmdata(coordinates,
+              key = "junction", 
+              value = c("roundabout"))
 )
 
 small_streets <- c(
-  coordinates %>%
-    opq() %>%
-    add_osm_feature(key = "highway", 
-                    value = c("residential", "living_street", "mini_roundabout")) %>%
-    osmdata_sf(),
-  coordinates %>%
-    opq() %>%
-    add_osm_feature(key = "junction", 
-                    value = c("roundabout")) %>%
-    osmdata_sf()
+  get_osmdata(coordinates,
+              key = "highway", 
+              value = c("residential", "living_street", "mini_roundabout")),
+  get_osmdata(coordinates,
+              key = "junction", 
+              value = c("roundabout"))
 )
 
-other_streets <- coordinates %>%
-  opq() %>%
-  add_osm_feature(key = "highway", 
-                  value = c("unclassified", "service", "footway", "pesdestrian", "track", "path", "bridleway")) %>%
-  osmdata_sf()
+other_streets <- get_osmdata(coordinates,
+                             key = "highway", 
+                             value = c("unclassified", "service", "footway", "pesdestrian",
+                                       "track", "path", "bridleway"))
 
 green_spaces <- c(
-  coordinates %>%
-    opq() %>%
-    add_osm_feature(key = "leisure", value = c("park", "garden", "village_green", "common", "pitch")) %>%
-    osmdata_sf(),
-  coordinates %>%
-    opq() %>%
-    add_osm_feature(key = "landuse", value = c("grass", "recreation_ground")) %>% # forest, farmland
-    osmdata_sf(),
-  coordinates %>%
-    opq() %>%
-    add_osm_feature(key = "natural", value = c("wood")) %>%
-    osmdata_sf()
+  get_osmdata(coordinates,
+              key = "leisure",
+              value = c("park", "garden", "village_green", "common", "pitch")),
+  get_osmdata(coordinates,
+              key = "landuse",
+              value = c("grass", "recreation_ground")), # # forest, farmland
+  get_osmdata(coordinates,
+              key = "natural",
+              value = c("wood"))
 )
 
 # Map ---------------------------------------------------------------------

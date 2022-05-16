@@ -9,6 +9,19 @@ library(sf)
 
 # Functions ---------------------------------------------------------------
 
+#' Upload and process OSM data
+#'
+#' @param coordinates Matrix of coordinates
+#' @param ... Arguments to [osmdata::add_osm_feature()], typically `key` and `value`
+#'
+#' @return See [osmdata::osmdata_sf()]
+get_osmdata <- function(coordinates, ...) {
+  coordinates %>%
+    opq() %>%
+    add_osm_feature(...) %>%
+    osmdata_sf()
+}
+
 #' Generate coordinates matrix
 #'
 #' @param x Vector of longitudes of the bottom left corner and the top right corner

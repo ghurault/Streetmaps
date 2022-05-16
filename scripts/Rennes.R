@@ -36,68 +36,52 @@ if (format == "24_30") {
                                   c(48.0748, 48.1474))
 }
 
-roads <- coordinates %>%
-  opq() %>%
-  add_osm_feature(key = "highway", 
-                  value = c("motorway", "trunk", "primary",
-                            "motorway_link", "trunk_link", "primary_link")) %>%
-  osmdata_sf()
+roads <- get_osmdata(coordinates,
+                     key = "highway", 
+                     value = c("motorway", "trunk", "primary",
+                               "motorway_link", "trunk_link", "primary_link"))
 
 streets <- c(
-  coordinates %>%
-    opq() %>%
-    add_osm_feature(key = "highway", 
-                    value = c("secondary", "tertiary",
-                              "secondary_link", "tertiary_link")) %>%
-    osmdata_sf(),
-  coordinates %>%
-    opq() %>%
-    add_osm_feature(key = "junction", 
-                    value = c("roundabout")) %>%
-    osmdata_sf()
+  get_osmdata(coordinates,
+              key = "highway", 
+              value = c("secondary", "tertiary",
+                        "secondary_link", "tertiary_link")),
+  get_osmdata(coordinates,
+              key = "junction", 
+              value = c("roundabout"))
 )
 
-small_streets <- coordinates %>%
-  opq() %>%
-  add_osm_feature(key = "highway", 
-                  value = c("residential", "living_street", "mini_roundabout")) %>%
-  osmdata_sf()
+small_streets <- get_osmdata(coordinates,
+                             key = "highway", 
+                             value = c("residential", "living_street", "mini_roundabout"))
 
-other_streets <- coordinates %>%
-  opq() %>%
-  add_osm_feature(key = "highway", 
-                  value = c("unclassified", "service", "footway", "pedestrian")) %>%
-  osmdata_sf()
+other_streets <- get_osmdata(coordinates,
+                             key = "highway", 
+                             value = c("unclassified", "service", "footway", "pedestrian"))
 
-river <- coordinates %>%
-  opq() %>%
-  add_osm_feature(key = "waterway", value = "river") %>%
-  osmdata_sf()
+river <- get_osmdata(coordinates,
+                     key = "waterway",
+                     value = "river")
 
-stream <- coordinates %>%
-  opq() %>%
-  add_osm_feature(key = "waterway", value = c("stream")) %>%
-  osmdata_sf()
+stream <- get_osmdata(coordinates,
+                      key = "waterway",
+                      value = c("stream"))
 
-water <- coordinates %>%
-  opq() %>%
-  add_osm_feature(key = "water", value = c("pond", "lake", "reflecting_pool", "reservoir", "basin")) %>%
-  osmdata_sf()
+water <- get_osmdata(coordinates,
+                     key = "water",
+                     value = c("pond", "lake", "reflecting_pool", "reservoir", "basin"))
 
-water2 <- coordinates %>%
-  opq() %>%
-  add_osm_feature(key = "natural", value = c("water")) %>%
-  osmdata_sf()
+water2 <- get_osmdata(coordinates,
+                      key = "natural",
+                      value = c("water"))
 
 green_spaces <- c(
-  coordinates %>%
-    opq() %>%
-    add_osm_feature(key = "leisure", value = c("park", "garden", "village_green", "common", "pitch")) %>%
-    osmdata_sf(),
-  coordinates %>%
-    opq() %>%
-    add_osm_feature(key = "landuse", value = c("grass", "recreation_ground", "forest")) %>% # farmland
-    osmdata_sf()
+  get_osmdata(coordinates,
+              key = "leisure",
+              value = c("park", "garden", "village_green", "common", "pitch")),
+  get_osmdata(coordinates,
+              key = "landuse",
+              value = c("grass", "recreation_ground", "forest")) # farmland
 )
 
 # Map ---------------------------------------------------------------------
