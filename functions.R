@@ -1,3 +1,12 @@
+# Libraries ---------------------------------------------------------------
+
+library(tidyverse)
+library(here)
+library(osmdata)
+library(sf)
+
+# Functions ---------------------------------------------------------------
+
 make_coordinates <- function(x, y) {
   # Generate coordinates matrix
   #

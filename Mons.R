@@ -6,9 +6,7 @@
 
 rm(list = ls()) # better to restart session as well
 
-library(tidyverse)
-library(osmdata)
-source("functions.R")
+source("R/functions.R")
 
 colour_street <- "black"
 colour_green <- "#477725"

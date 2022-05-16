@@ -9,11 +9,9 @@
 
 rm(list = ls()) # better to restart session as well
 
-library(tidyverse)
-library(osmdata)
+source("R/functions.R")
 library(extrafont)
 loadfonts(device = "win")
-source("functions.R")
 
 colour_street <- "#ffbe7f"
 colour_green <- "#477725"
