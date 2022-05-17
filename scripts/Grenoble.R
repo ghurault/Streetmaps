@@ -8,9 +8,9 @@ rm(list = ls()) # better to restart session as well
 
 source("R/functions.R")
 
-colour_street <- "#ffbe7f"
-colour_water <- "#5A97AA"
-colour_background <- "#282828"
+palette <- list(street = "#ffbe7f",
+                water = "#5A97AA",
+                background = "#282828")
 
 # Processing --------------------------------------------------------------
 
@@ -51,37 +51,37 @@ ggplot() +
   # Streets (polygons); put before green spaces as some roundabout have grass in the middle
   geom_sf(data = roads$osm_polygons,
           inherit.aes = FALSE,
-          color = colour_street, fill = colour_street,
+          color = palette$street, fill = palette$street,
           size = .1) +
   geom_sf(data = streets$osm_polygons,
           inherit.aes = FALSE,
-          color = colour_street, fill = colour_street,
+          color = palette$street, fill = palette$street,
           size = .1) +
   # Water
   geom_sf(data = river$osm_lines,
           inherit.aes = FALSE,
-          color = colour_water,
+          color = palette$water,
           size = 2.5, alpha = 1) +
   # Streets (lines)
   geom_sf(data = roads$osm_lines,
           inherit.aes = FALSE,
-          color = colour_street,
+          color = palette$street,
           size = .75) +
   geom_sf(data = streets$osm_lines,
           inherit.aes = FALSE,
-          color = colour_street,
+          color = palette$street,
           size = .5) +
   geom_sf(data = other_streets$osm_lines,
           inherit.aes = FALSE,
-          color = colour_street,
+          color = palette$street,
           size = .2) +
   # Options
   coord_sf(xlim = coordinates["x", ],
            ylim = coordinates["y", ],
            expand = FALSE) +
   theme_void() +
-  theme(plot.background = element_rect(fill = colour_background),
-        panel.background = element_rect(fill = colour_background))
+  theme(plot.background = element_rect(fill = palette$background),
+        panel.background = element_rect(fill = palette$background))
 
 if (FALSE) {
   ggsave(here("docs", paste0("Grenoble.jpg")),
